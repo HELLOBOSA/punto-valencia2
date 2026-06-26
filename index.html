@@ -1097,7 +1097,11 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 
   /* ---------- marquee seamless loop ---------- */
   if (mq && mq.firstElementChild) {
-    mq.appendChild(mq.firstElementChild.cloneNode(true));
+    var mqFirst = mq.firstElementChild, mqGuard = 0;
+    while (mq.scrollWidth < window.innerWidth * 1.5 && mqGuard++ < 40) {
+      mq.appendChild(mqFirst.cloneNode(true));
+    }
+    mq.innerHTML += mq.innerHTML;
   }
 
   /* ---------- nav scroll state + progress bar ---------- */
