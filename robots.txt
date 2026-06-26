@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://valencia.puntoreforma.es/sitemap.xml
