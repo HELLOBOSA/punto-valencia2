@@ -17,7 +17,7 @@
 - Arquitectura & diseño — architecture, layout, material direction and design decisions for renovation projects
 - Cocinas & baños prime — kitchens and bathrooms designed as central parts of the renovation
 - Carpintería a medida & metal — bespoke wardrobes, storage, built-ins, furniture and custom metal constructions
-- Comprobaciones técnicas & permisos — technical checks, permit coordination and engineer procedures
+- Comprobaciones técnicas & permisos — technical checks, permit coordination and procedures
 
 ## Pages
 
