@@ -20,5 +20,38 @@
     <p>Esta página no existe. / This page doesn't exist.</p>
     <a href="/">← Inicio / Home</a>
   </div>
+
+<!-- PUNTOREFORMA MINIMAL COOKIE BANNER -->
+<script>
+(function(){
+  var CONSENT_KEY='puntoreforma_cookie_consent_v1';
+  var LEGACY_COOKIE_KEY='cookieConsent';
+  var COOKIE_DOMAIN='.puntoreforma.es';
+  var CONSENT_DAYS=180;
+  var copy={
+    es:{title:'Usamos cookies',more:'Más info',reject:'Rechazar',accept:'Aceptar',legalUrl:'https://puntoreforma.es/legal/'},
+    en:{title:'We use cookies',more:'More info',reject:'Reject',accept:'Accept',legalUrl:'https://puntoreforma.es/legal/'}
+  };
+  var css="#wb-cookie-banner{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:2147483647;width:max-content;max-width:calc(100vw - 32px);display:flex;align-items:center;justify-content:center;gap:14px;padding:8px 10px 8px 16px;border:1px solid rgba(255,255,255,.18);background:rgba(40,36,32,.28);color:#fff;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:999px;box-shadow:0 18px 45px rgba(0,0,0,.16);font-family:inherit}#wb-cookie-banner[hidden]{display:none}#wb-cookie-banner .wb-cookie-copy,#wb-cookie-banner .wb-cookie-actions{display:flex;align-items:center;gap:8px}#wb-cookie-banner .wb-cookie-title,#wb-cookie-banner .wb-cookie-btn{font-size:.6rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}#wb-cookie-banner .wb-cookie-link{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}#wb-cookie-banner .wb-cookie-link:hover{color:#fff}#wb-cookie-banner .wb-cookie-btn{border:0;background:transparent;color:rgba(255,255,255,.72);padding:6px 9px;border-radius:999px;font-family:inherit;line-height:1;cursor:pointer;appearance:none;-webkit-appearance:none;transition:color .25s,background .25s}#wb-cookie-banner .wb-cookie-btn:hover{color:#fff}#wb-cookie-banner .wb-cookie-btn.accept{background:#fff;color:#111;padding:6px 11px}#wb-cookie-banner .wb-cookie-btn.accept:hover{background:rgba(255,255,255,.82);color:#111}@media(max-width:520px){#wb-cookie-banner{bottom:16px;max-width:calc(100vw - 20px);gap:7px;padding:8px 9px 8px 12px}#wb-cookie-banner .wb-cookie-copy,#wb-cookie-banner .wb-cookie-actions{gap:6px}#wb-cookie-banner .wb-cookie-title,#wb-cookie-banner .wb-cookie-btn{font-size:.5rem;letter-spacing:.12em}#wb-cookie-banner .wb-cookie-link{font-size:.46rem;letter-spacing:.12em}#wb-cookie-banner .wb-cookie-btn{padding:6px 7px}#wb-cookie-banner .wb-cookie-btn.accept{padding:6px 9px}}@media(max-width:380px){#wb-cookie-banner{flex-wrap:wrap;border-radius:18px;row-gap:8px}#wb-cookie-banner .wb-cookie-copy,#wb-cookie-banner .wb-cookie-actions{justify-content:center}}";
+  function getLang(){return (document.documentElement.lang||'es').toLowerCase().indexOf('en')===0?'en':'es'}
+  function cookieDomainAttr(){var host=window.location.hostname;if(host==='puntoreforma.es'||host.slice(-16)==='.puntoreforma.es')return '; Domain='+COOKIE_DOMAIN;return ''}
+  function readCookie(name){return document.cookie.split(';').map(function(cookie){return cookie.trim()}).filter(Boolean).reduce(function(value,cookie){var eq=cookie.indexOf('=');var key=eq>-1?cookie.slice(0,eq):cookie;if(key===name)return decodeURIComponent(eq>-1?cookie.slice(eq+1):'');return value},null)}
+  function writeConsentCookie(choice){var maxAge=CONSENT_DAYS*24*60*60;var secure=window.location.protocol==='https:'?'; Secure':'';document.cookie=CONSENT_KEY+'='+encodeURIComponent(choice)+'; Max-Age='+maxAge+'; Path=/'+cookieDomainAttr()+'; SameSite=Lax'+secure}
+  function readConsent(){var cookieChoice=readCookie(CONSENT_KEY);if(cookieChoice)return cookieChoice;if(readCookie(LEGACY_COOKIE_KEY))return 'accept';try{var raw=localStorage.getItem(CONSENT_KEY);if(!raw)return null;var data=JSON.parse(raw);if(!data.expires||data.expires<Date.now()){localStorage.removeItem(CONSENT_KEY);return null}if(data.choice)writeConsentCookie(data.choice);return data.choice||null}catch(e){localStorage.removeItem(CONSENT_KEY);return null}}
+  function saveConsent(choice){var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
+  function applyCopy(banner){var lang=getLang();var t=copy[lang]||copy.es;var title=banner.querySelector('.wb-cookie-title');var link=banner.querySelector('.wb-cookie-link');var reject=banner.querySelector('[data-choice="reject"]');var accept=banner.querySelector('[data-choice="accept"]');if(title)title.textContent=t.title;if(link){link.textContent=t.more;link.href=t.legalUrl}if(reject)reject.textContent=t.reject;if(accept)accept.textContent=t.accept}
+  function initBanner(){
+    if(readConsent())return;
+    var oldBanner=document.getElementById('cookieConsentBanner');if(oldBanner)oldBanner.remove();
+    if(!document.getElementById('wb-cookie-banner-style')){var style=document.createElement('style');style.id='wb-cookie-banner-style';style.textContent=css;document.head.appendChild(style)}
+    var banner=document.createElement('div');banner.id='wb-cookie-banner';banner.setAttribute('role','region');banner.setAttribute('aria-label','Cookie notice');banner.innerHTML='<div class="wb-cookie-copy"><span class="wb-cookie-title"></span><a class="wb-cookie-link" href="https://puntoreforma.es/legal/" target="_blank" rel="noopener noreferrer"></a></div><div class="wb-cookie-actions"><button class="wb-cookie-btn" type="button" data-choice="reject"></button><button class="wb-cookie-btn accept" type="button" data-choice="accept"></button></div>';
+    document.body.appendChild(banner);applyCopy(banner);
+    banner.querySelectorAll('[data-choice]').forEach(function(button){button.addEventListener('click',function(){saveConsent(button.getAttribute('data-choice'));banner.hidden=true})});
+    document.querySelectorAll('.lang [data-lang]').forEach(function(button){button.addEventListener('click',function(){setTimeout(function(){applyCopy(banner)},0)})});
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initBanner)}else{initBanner()}
+})();
+</script>
+<!-- END PUNTOREFORMA MINIMAL COOKIE BANNER -->
 </body>
 </html>
