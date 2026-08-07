@@ -10,12 +10,29 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2. Denied until the banner says otherwise, then updated in place.
+  (function(){
+    var granted = false;
+    try {
+      var raw = localStorage.getItem('puntoreforma_cookie_consent_v1');
+      if (raw) { var v = JSON.parse(raw); granted = v && v.choice === 'accept'; }
+    } catch (e) {}
+    gtag('consent', 'default', {
+      ad_storage: granted ? 'granted' : 'denied',
+      ad_user_data: granted ? 'granted' : 'denied',
+      ad_personalization: granted ? 'granted' : 'denied',
+      analytics_storage: granted ? 'granted' : 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+  })();
   gtag('js', new Date());
   gtag('config', 'G-SPC0RWWY1K');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arquitectura &amp; Reformas Integrales en Valencia | Puntoreforma</title>
-<meta name="description" content="Arquitectura de interiores y reformas integrales en Valencia — para viviendas, pisos y locales. Carpintería a medida, cocinas y baños prime, coordinación de obra y permisos, de la idea a la entrega.">
+<title>Arquitectura y Reformas Integrales Valencia | Puntoreforma</title>
+<meta name="description" content="Arquitectura de interiores y reformas integrales en Valencia, para viviendas, pisos y locales. Carpintería a medida, cocinas y baños prime, coordinación de obra y permisos, de la idea a la entrega.">
 <meta name="keywords" content="arquitectura Valencia, reformas integrales Valencia, gestión de obra Valencia, reforma integral piso Valencia, reforma vivienda Valencia, reforma local Valencia, reforma baño Valencia, reforma cocina Valencia, cocinas prime Valencia, carpintería a medida Valencia, permisos reforma Valencia, COAM Valencia, English-speaking renovation Valencia">
 <link rel="canonical" href="https://valencia.puntoreforma.es/">
 <link rel="alternate" hreflang="es" href="https://valencia.puntoreforma.es/">
@@ -24,7 +41,7 @@
 <meta property="og:url" content="https://valencia.puntoreforma.es/">
 <meta property="og:site_name" content="Puntoreforma">
 <meta property="og:title" content="Arquitectura &amp; Reformas Integrales en Valencia | Puntoreforma">
-<meta property="og:description" content="Arquitectura de interiores y reformas integrales en Valencia — para viviendas, pisos y locales. Carpintería a medida, cocinas y baños prime, coordinación de obra y permisos, de la idea a la entrega.">
+<meta property="og:description" content="Arquitectura de interiores y reformas integrales en Valencia, para viviendas, pisos y locales. Carpintería a medida, cocinas y baños prime, coordinación de obra y permisos, de la idea a la entrega.">
 <meta property="og:image" content="https://valencia.puntoreforma.es/images/featured.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="900">
@@ -32,7 +49,7 @@
 <meta property="og:locale:alternate" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Architecture &amp; total renovations in Valencia · Puntoreforma">
-<meta name="twitter:description" content="Architecture and total renovations in Valencia — for homes, apartments and commercial spaces. Custom carpentry, prime kitchens and bathrooms, project management and permits, from first idea to handover. One responsible contact throughout.">
+<meta name="twitter:description" content="Architecture and total renovations in Valencia, for homes, apartments and commercial spaces. Custom carpentry, prime kitchens and bathrooms, project management and permits, from first idea to handover. One responsible contact throughout.">
 <meta name="twitter:image" content="https://valencia.puntoreforma.es/images/featured.webp">
 <meta name="geo.region" content="ES-VC">
 <meta name="geo.placename" content="Valencia">
@@ -890,40 +907,40 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
         <figcaption class="pj-cap"><strong data-en="Bistró">Bistró</strong><span data-en="Projects">Proyectos</span></figcaption>
       </figure>
       <figure class="pj-tile third hidden rv">
-        <div class="pj-media" data-title="Villa Boa — Cocina" data-title-en="Villa Boa — Kitchen" data-full="images/projekt/villa-boa-after4-KITCHEN.webp" role="button" tabindex="0" aria-label="Villa Boa Cocina">
+        <div class="pj-media" data-title="Villa Boa, Cocina" data-title-en="Villa Boa, Kitchen" data-full="images/projekt/villa-boa-after4-KITCHEN.webp" role="button" tabindex="0" aria-label="Villa Boa Cocina">
           <img src="images/projekt/villa-boa-after4-KITCHEN.webp" width="2559" height="1428" alt="Villa Boa cocina reforma de Puntoreforma" loading="lazy">
         </div>
-        <figcaption class="pj-cap"><strong data-en="Villa Boa — Kitchen">Villa Boa — Cocina</strong><span data-en="Projects">Proyectos</span></figcaption>
+        <figcaption class="pj-cap"><strong data-en="Villa Boa, Kitchen">Villa Boa, Cocina</strong><span data-en="Projects">Proyectos</span></figcaption>
       </figure>
       <figure class="pj-tile third hidden rv">
-        <div class="pj-media" data-title="Villa Boa — Baño" data-title-en="Villa Boa — Bathroom" data-full="images/projekt/villa-boa-after2-BATHROOM.webp" role="button" tabindex="0" aria-label="Villa Boa Baño">
+        <div class="pj-media" data-title="Villa Boa, Baño" data-title-en="Villa Boa, Bathroom" data-full="images/projekt/villa-boa-after2-BATHROOM.webp" role="button" tabindex="0" aria-label="Villa Boa Baño">
           <img src="images/projekt/villa-boa-after2-BATHROOM.webp" width="2559" height="1428" alt="Villa Boa baño reforma de Puntoreforma" loading="lazy">
         </div>
-        <figcaption class="pj-cap"><strong data-en="Villa Boa — Bathroom">Villa Boa — Baño</strong><span data-en="Projects">Proyectos</span></figcaption>
+        <figcaption class="pj-cap"><strong data-en="Villa Boa, Bathroom">Villa Boa, Baño</strong><span data-en="Projects">Proyectos</span></figcaption>
       </figure>
       <figure class="pj-tile third hidden rv">
-        <div class="pj-media" data-title="Apartamento A75 — Baño" data-title-en="Apartment A75 — Bathroom" data-full="images/projekt/APARTMENT_A75_after2-BATHROOM.webp" role="button" tabindex="0" aria-label="Apartamento A75 Baño">
+        <div class="pj-media" data-title="Apartamento A75, Baño" data-title-en="Apartment A75, Bathroom" data-full="images/projekt/APARTMENT_A75_after2-BATHROOM.webp" role="button" tabindex="0" aria-label="Apartamento A75 Baño">
           <img src="images/projekt/APARTMENT_A75_after2-BATHROOM.webp" width="2559" height="1412" alt="Apartamento A75 baño reforma de Puntoreforma" loading="lazy">
         </div>
-        <figcaption class="pj-cap"><strong data-en="Apartment A75 — Bathroom">Apartamento A75 — Baño</strong><span data-en="Projects">Proyectos</span></figcaption>
+        <figcaption class="pj-cap"><strong data-en="Apartment A75, Bathroom">Apartamento A75, Baño</strong><span data-en="Projects">Proyectos</span></figcaption>
       </figure>
       <figure class="pj-tile third hidden rv">
-        <div class="pj-media" data-title="Villa Boa — Dormitorio" data-title-en="Villa Boa — Bedroom" data-full="images/projekt/villa-boa-after3-BEDROOM.webp" role="button" tabindex="0" aria-label="Villa Boa Dormitorio">
+        <div class="pj-media" data-title="Villa Boa, Dormitorio" data-title-en="Villa Boa, Bedroom" data-full="images/projekt/villa-boa-after3-BEDROOM.webp" role="button" tabindex="0" aria-label="Villa Boa Dormitorio">
           <img src="images/projekt/villa-boa-after3-BEDROOM.webp" width="2559" height="1428" alt="Villa Boa dormitorio reforma de Puntoreforma" loading="lazy">
         </div>
-        <figcaption class="pj-cap"><strong data-en="Villa Boa — Bedroom">Villa Boa — Dormitorio</strong><span data-en="Projects">Proyectos</span></figcaption>
+        <figcaption class="pj-cap"><strong data-en="Villa Boa, Bedroom">Villa Boa, Dormitorio</strong><span data-en="Projects">Proyectos</span></figcaption>
       </figure>
       <figure class="pj-tile third hidden rv">
-        <div class="pj-media" data-title="Apartamento K38 — Baño" data-title-en="Apartment K38 — Bathroom" data-full="images/projekt/APARTMENT_K38_after2-BATHROOM.webp" role="button" tabindex="0" aria-label="Apartamento K38 Baño">
+        <div class="pj-media" data-title="Apartamento K38, Baño" data-title-en="Apartment K38, Bathroom" data-full="images/projekt/APARTMENT_K38_after2-BATHROOM.webp" role="button" tabindex="0" aria-label="Apartamento K38 Baño">
           <img src="images/projekt/APARTMENT_K38_after2-BATHROOM.webp" width="1717" height="2559" alt="Apartamento K38 baño reforma de Puntoreforma" loading="lazy">
         </div>
-        <figcaption class="pj-cap"><strong data-en="Apartment K38 — Bathroom">Apartamento K38 — Baño</strong><span data-en="Projects">Proyectos</span></figcaption>
+        <figcaption class="pj-cap"><strong data-en="Apartment K38, Bathroom">Apartamento K38, Baño</strong><span data-en="Projects">Proyectos</span></figcaption>
       </figure>
       <figure class="pj-tile third hidden rv">
-        <div class="pj-media" data-title="Apartamento V1 — Salón" data-title-en="Apartment V1 — Living Room" data-full="images/projekt/APARTMENT_V1_AFTER3-READINGROOM.webp" role="button" tabindex="0" aria-label="Apartamento V1 Salón">
+        <div class="pj-media" data-title="Apartamento V1, Salón" data-title-en="Apartment V1, Living Room" data-full="images/projekt/APARTMENT_V1_AFTER3-READINGROOM.webp" role="button" tabindex="0" aria-label="Apartamento V1 Salón">
           <img src="images/projekt/APARTMENT_V1_AFTER3-READINGROOM.webp" width="2559" height="1428" alt="Apartamento V1 salón reforma de Puntoreforma" loading="lazy">
         </div>
-        <figcaption class="pj-cap"><strong data-en="Apartment V1 — Living Room">Apartamento V1 — Salón</strong><span data-en="Projects">Proyectos</span></figcaption>
+        <figcaption class="pj-cap"><strong data-en="Apartment V1, Living Room">Apartamento V1, Salón</strong><span data-en="Projects">Proyectos</span></figcaption>
       </figure>
     </div>
     <div class="pj-actions rv">
@@ -951,7 +968,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
     </div>
 
     <div class="rv d1">
-      <form class="lead-form" id="leadForm" action="https://usebasin.com/f/62fcdc60da89" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" novalidate>
+      <form class="lead-form" id="leadForm" action="https://usebasin.com/f/62fcdc60da89" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" novalidate data-lead-site="valencia.puntoreforma.es" data-lead-market="spain" data-lead-context="home_page_general_enquiry">
         <input type="hidden" name="subject" value="Nueva consulta desde valencia.puntoreforma.es">
         <input type="hidden" name="from_name" value="Punto Reforma Valencia formulario web">
         <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
@@ -1080,10 +1097,11 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
     });
     langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
     try { localStorage.setItem(LS_LANG, lang); } catch (e) {}
+    try { document.cookie = LS_LANG + '=' + lang + '; Max-Age=31536000; Path=/; Domain=.puntoreforma.es; SameSite=Lax'; } catch (e) {}
   }
   langButtons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
   var saved = 'es';
-  try { saved = localStorage.getItem(LS_LANG) || 'es'; } catch (e) {}
+  try { saved = localStorage.getItem(LS_LANG) || (document.cookie.match(/(?:^|; )puntoreforma_lang=([^;]*)/) || [])[1] || 'es'; } catch (e) {}
   setLang(saved);
 
 
@@ -1371,7 +1389,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
   function readCookie(name){return document.cookie.split(';').map(function(cookie){return cookie.trim()}).filter(Boolean).reduce(function(value,cookie){var eq=cookie.indexOf('=');var key=eq>-1?cookie.slice(0,eq):cookie;if(key===name)return decodeURIComponent(eq>-1?cookie.slice(eq+1):'');return value},null)}
   function writeConsentCookie(choice){var maxAge=CONSENT_DAYS*24*60*60;var secure=window.location.protocol==='https:'?'; Secure':'';document.cookie=CONSENT_KEY+'='+encodeURIComponent(choice)+'; Max-Age='+maxAge+'; Path=/'+cookieDomainAttr()+'; SameSite=Lax'+secure}
   function readConsent(){var cookieChoice=readCookie(CONSENT_KEY);if(cookieChoice)return cookieChoice;if(readCookie(LEGACY_COOKIE_KEY))return 'accept';try{var raw=localStorage.getItem(CONSENT_KEY);if(!raw)return null;var data=JSON.parse(raw);if(!data.expires||data.expires<Date.now()){localStorage.removeItem(CONSENT_KEY);return null}if(data.choice)writeConsentCookie(data.choice);return data.choice||null}catch(e){localStorage.removeItem(CONSENT_KEY);return null}}
-  function saveConsent(choice){var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
+  function saveConsent(choice){/* tell Google in the same page view, not on the next load */try{if(typeof gtag==='function'){var g=choice==='accept'?'granted':'denied';gtag('consent','update',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g});}}catch(e){}var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
   function applyCopy(banner){var lang=getLang();var t=copy[lang]||copy.es;var title=banner.querySelector('.wb-cookie-title');var link=banner.querySelector('.wb-cookie-link');var reject=banner.querySelector('[data-choice="reject"]');var accept=banner.querySelector('[data-choice="accept"]');if(title)title.textContent=t.title;if(link){link.textContent=t.more;link.href=t.legalUrl}if(reject)reject.textContent=t.reject;if(accept)accept.textContent=t.accept}
   function initBanner(){
     if(readConsent())return;
@@ -1386,5 +1404,6 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 })();
 </script>
 <!-- END PUNTOREFORMA MINIMAL COOKIE BANNER -->
+  <script src="assets/form-context.js"></script>
 </body>
 </html>
