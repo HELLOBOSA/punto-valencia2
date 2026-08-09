@@ -1103,7 +1103,7 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
   }
   langButtons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
   var saved = 'es';
-  try { saved = localStorage.getItem(LS_LANG) || (document.cookie.match(/(?:^|; )puntoreforma_lang=([^;]*)/) || [])[1] || 'es'; } catch (e) {}
+  try { saved = (document.cookie.match(/(?:^|; )puntoreforma_lang=([^;]*)/) || [])[1] || localStorage.getItem(LS_LANG) || 'es'; } catch (e) {}
   setLang(saved);
 
 
