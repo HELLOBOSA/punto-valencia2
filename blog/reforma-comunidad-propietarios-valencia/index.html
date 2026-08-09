@@ -561,22 +561,35 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  // Consent Mode v2. Denied until the banner says otherwise, then updated in place.
+  // Consent Mode v2. The banner is switched off: set WB_CONSENT_ENABLED to true
+  // to require a choice again. Everything below stays wired for that.
+  window.WB_CONSENT_ENABLED = false;
   (function(){
-    var granted = false;
-    try {
-      var raw = localStorage.getItem('puntoreforma_cookie_consent_v1');
-      if (raw) { var v = JSON.parse(raw); granted = v && v.choice === 'accept'; }
-    } catch (e) {}
-    gtag('consent', 'default', {
-      ad_storage: granted ? 'granted' : 'denied',
-      ad_user_data: granted ? 'granted' : 'denied',
-      ad_personalization: granted ? 'granted' : 'denied',
-      analytics_storage: granted ? 'granted' : 'denied',
+    var granted = true;
+    if (window.WB_CONSENT_ENABLED) {
+      granted = false;
+      try {
+        // the brand-wide cookie is written on every host, so it wins over the
+        // per-origin localStorage copy, which goes stale on each subdomain
+        var c = (document.cookie.match(/(?:^|; )puntoreforma_cookie_consent_v1=([^;]*)/) || [])[1];
+        if (c) { granted = decodeURIComponent(c) === 'accept'; }
+        else {
+          var raw = localStorage.getItem('puntoreforma_cookie_consent_v1');
+          if (raw) { var v = JSON.parse(raw); granted = v && v.choice === 'accept'; }
+        }
+      } catch (e) {}
+    }
+    var g = granted ? 'granted' : 'denied';
+    var d = {
+      ad_storage: g,
+      ad_user_data: g,
+      ad_personalization: g,
+      analytics_storage: g,
       functionality_storage: 'granted',
-      security_storage: 'granted',
-      wait_for_update: 500
-    });
+      security_storage: 'granted'
+    };
+    if (window.WB_CONSENT_ENABLED) d.wait_for_update = 500;
+    gtag('consent', 'default', d);
   })();
   gtag('js', new Date());
   gtag('config', 'G-SPC0RWWY1K');
@@ -1093,10 +1106,13 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
   function readCookie(name){return document.cookie.split(';').map(function(cookie){return cookie.trim()}).filter(Boolean).reduce(function(value,cookie){var eq=cookie.indexOf('=');var key=eq>-1?cookie.slice(0,eq):cookie;if(key===name)return decodeURIComponent(eq>-1?cookie.slice(eq+1):'');return value},null)}
   function writeConsentCookie(choice){var maxAge=CONSENT_DAYS*24*60*60;var secure=window.location.protocol==='https:'?'; Secure':'';document.cookie=CONSENT_KEY+'='+encodeURIComponent(choice)+'; Max-Age='+maxAge+'; Path=/'+cookieDomainAttr()+'; SameSite=Lax'+secure}
   function readConsent(){var cookieChoice=readCookie(CONSENT_KEY);if(cookieChoice)return cookieChoice;if(readCookie(LEGACY_COOKIE_KEY))return 'accept';try{var raw=localStorage.getItem(CONSENT_KEY);if(!raw)return null;var data=JSON.parse(raw);if(!data.expires||data.expires<Date.now()){localStorage.removeItem(CONSENT_KEY);return null}if(data.choice)writeConsentCookie(data.choice);return data.choice||null}catch(e){localStorage.removeItem(CONSENT_KEY);return null}}
+  function pushConsent(choice){try{if(typeof gtag==='function'){var g=choice==='accept'?'granted':'denied';gtag('consent','update',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g})}}catch(e){}}
   function saveConsent(choice){/* tell Google in the same page view, not on the next load */try{if(typeof gtag==='function'){var g=choice==='accept'?'granted':'denied';gtag('consent','update',{ad_storage:g,ad_user_data:g,ad_personalization:g,analytics_storage:g});}}catch(e){}var expires=Date.now()+CONSENT_DAYS*24*60*60*1000;writeConsentCookie(choice);try{localStorage.setItem(CONSENT_KEY,JSON.stringify({choice:choice,expires:expires}))}catch(e){}}
   function applyCopy(banner){var lang=getLang();var t=copy[lang]||copy.es;var title=banner.querySelector('.wb-cookie-title');var link=banner.querySelector('.wb-cookie-link');var reject=banner.querySelector('[data-choice="reject"]');var accept=banner.querySelector('[data-choice="accept"]');if(title)title.textContent=t.title;if(link){link.textContent=t.more;link.href=t.legalUrl}if(reject)reject.textContent=t.reject;if(accept)accept.textContent=t.accept}
   function initBanner(){
-    if(readConsent())return;
+    if(window.WB_CONSENT_ENABLED===false)return;
+    var prior=readConsent();
+    if(prior){pushConsent(prior);return;}
     var oldBanner=document.getElementById('cookieConsentBanner');if(oldBanner)oldBanner.remove();
     if(!document.getElementById('wb-cookie-banner-style')){var style=document.createElement('style');style.id='wb-cookie-banner-style';style.textContent=css;document.head.appendChild(style)}
     var banner=document.createElement('div');banner.id='wb-cookie-banner';banner.setAttribute('role','region');banner.setAttribute('aria-label','Cookie notice');banner.innerHTML='<div class="wb-cookie-copy"><span class="wb-cookie-title"></span><a class="wb-cookie-link" href="https://puntoreforma.es/legal/" target="_blank" rel="noopener noreferrer"></a></div><div class="wb-cookie-actions"><button class="wb-cookie-btn" type="button" data-choice="reject"></button><button class="wb-cookie-btn accept" type="button" data-choice="accept"></button></div>';
