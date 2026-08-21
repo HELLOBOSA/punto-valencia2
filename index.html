@@ -620,6 +620,13 @@ body.no-motion .hero-r .badge .pulse::after, body.no-motion .scroll-cue .ln::aft
   .pj-count { display: none; }
 }
 
+
+/* mobile: keep the contact card inside its column and the hero eyebrow on one line */
+.contact-grid > * { min-width: 0; }
+.hero .eyebrow { display: block; }
+.hero .eyebrow .tick { display: inline-block; vertical-align: middle; margin-right: .7em; }
+@media (max-width: 600px) { .hero .eyebrow { letter-spacing: .12em; } }
+@media (max-width: 380px) { .hero .eyebrow { font-size: 11px; } }
 </style>
 </head>
 <body>
